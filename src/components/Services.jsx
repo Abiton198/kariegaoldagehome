@@ -1,15 +1,26 @@
+
 import React, { useEffect, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
 /**
  * KAREIGA OLD AGE HOME — Services page
- * Matches the design system from Home.jsx / About.jsx:
- *  pine #16302A · sand #F1E9DA · gold #C68A2E · sage #7F9A87 · ink #24211B
- *  display: Newsreader · body: Work Sans · utility: Space Mono
  *
- * IMAGE NOTE: every image below is a neutral placeholder (picsum.photos,
- * seeded per-service so it stays stable on reload). Replace each `image`
- * with real, licensed photography before launch.
+ * Modern Oceanic Indigo & Sapphire Blue design system:
+ *
+ * Deep Indigo:  #0B132B
+ * Sapphire:     #2563EB
+ * Sky Cyan:     #38BDF8
+ * Soft Slate:   #F8FAFC
+ * Slate Text:   #475569
+ * Muted Slate:  #64748B
+ *
+ * display: Newsreader
+ * body: Work Sans
+ * utility: Space Mono
+ *
+ * IMAGE NOTE:
+ * Every image below is currently a neutral placeholder.
+ * Replace each image with licensed/on-site photography before launch.
  */
 
 const sliderImages = [
@@ -40,7 +51,7 @@ const kareigaServices = [
   {
     title: 'Personal Hygiene & Grooming Support',
     description:
-      'Our caregivers help residents maintain personal cleanliness with respect and sensitivity. Services include assistance with bathing, dressing, oral care, and grooming routines. Every effort is made to ensure residents feel dignified, refreshed, and confident, with care plans adapted to each individual\'s preferences and physical needs.',
+      "Our caregivers help residents maintain personal cleanliness with respect and sensitivity. Services include assistance with bathing, dressing, oral care, and grooming routines. Every effort is made to ensure residents feel dignified, refreshed, and confident, with care plans adapted to each individual's preferences and physical needs.",
     image: 'https://picsum.photos/seed/kareiga-svc-hygiene/700/500',
   },
   {
@@ -113,22 +124,32 @@ export default function Services() {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % sliderImages.length);
     }, 4000);
+
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div
-      className="min-h-screen bg-[#F1E9DA] text-[#24211B]"
+      className="min-h-screen bg-[#F8FAFC] text-[#0B132B]"
       style={{ fontFamily: "'Work Sans', sans-serif" }}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
-        .font-display { font-family: 'Newsreader', serif; }
-        .font-mono { font-family: 'Space Mono', monospace; }
+        @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Work+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+        .font-display {
+          font-family: 'Newsreader', serif;
+        }
+
+        .font-mono {
+          font-family: 'Space Mono', monospace;
+        }
       `}</style>
 
-      {/* ---------- SLIDER HERO ---------- */}
-      <section className="relative h-[52vh] min-h-[380px] w-full overflow-hidden bg-[#16302A]">
+      {/* =========================================================
+          SLIDER HERO
+      ========================================================= */}
+      <section className="relative h-[52vh] min-h-[380px] w-full overflow-hidden bg-[#0B132B]">
+
         {sliderImages.map((src, i) => (
           <img
             key={src}
@@ -139,83 +160,120 @@ export default function Services() {
             }`}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#16302A] via-[#16302A]/40 to-[#16302A]/10" />
 
-        <div className="relative z-10 h-full flex flex-col justify-end px-6 sm:px-10 pb-12 max-w-5xl mx-auto">
-          <span className="font-mono text-xs tracking-[0.25em] text-[#C68A2E] uppercase mb-4">
+        {/* Oceanic gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B] via-[#0B132B]/55 to-[#2563EB]/10" />
+
+        <div className="relative z-10 h-full flex flex-col justify-end px-6 sm:px-10 pb-14 max-w-6xl mx-auto">
+
+          <span className="font-mono text-xs tracking-[0.25em] text-[#38BDF8] uppercase mb-4">
             What we offer
           </span>
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl text-[#F1E9DA] leading-tight max-w-2xl">
+
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl text-white leading-tight max-w-3xl">
             Care that covers everything, delivered by people who notice the details.
           </h1>
+
+          <div className="w-16 h-1 bg-[#38BDF8] mt-6 rounded-full" />
         </div>
 
-        {/* slide indicators */}
-        <div className="absolute bottom-5 right-6 sm:right-10 z-10 flex gap-2">
+        {/* Slide indicators */}
+        <div className="absolute bottom-6 right-6 sm:right-10 z-10 flex gap-2">
           {sliderImages.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrentImage(i)}
               aria-label={`Show slide ${i + 1}`}
               className={`h-1.5 rounded-full transition-all ${
-                i === currentImage ? 'w-8 bg-[#C68A2E]' : 'w-4 bg-[#F1E9DA]/40'
+                i === currentImage
+                  ? 'w-10 bg-[#38BDF8]'
+                  : 'w-4 bg-white/40 hover:bg-white/70'
               }`}
             />
           ))}
         </div>
       </section>
 
-      {/* ---------- SERVICES GRID ---------- */}
+      {/* =========================================================
+          SERVICES GRID
+      ========================================================= */}
       <section className="max-w-7xl mx-auto px-6 sm:px-10 py-20">
+
         <div className="max-w-2xl mb-14">
-          <span className="font-mono text-xs tracking-[0.25em] text-[#7F9A87] uppercase">
+          <span className="font-mono text-xs tracking-[0.25em] text-[#2563EB] uppercase">
             14 areas of care
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl text-[#16302A] mt-3">
+
+          <h2 className="font-display text-3xl sm:text-4xl text-[#0B132B] mt-3">
             Services at Kareiga
           </h2>
-          <p className="text-[#4A463B] mt-4 leading-relaxed">
+
+          <div className="w-12 h-1 bg-[#38BDF8] mt-5 rounded-full" />
+
+          <p className="text-[#475569] mt-5 leading-relaxed">
             From daily medical monitoring to a quiet conversation over tea —
             every service here is delivered by the same familiar faces, not
             a rotating roster of strangers.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#D8CFBD]">
+        {/* Modern service grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
           {kareigaServices.map((service, index) => {
             const isExpanded = expandedIndex === index;
+
             const previewText =
               service.description.length > 110
                 ? service.description.slice(0, 110).trim() + '…'
                 : service.description;
 
             return (
-              <div key={service.title} className="bg-[#F1E9DA] flex flex-col">
-                <div className="h-44 overflow-hidden">
+              <div
+                key={service.title}
+                className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              >
+
+                {/* Service image */}
+                <div className="h-48 overflow-hidden relative">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
-                </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <span className="font-mono text-[10px] tracking-[0.2em] text-[#C68A2E] uppercase mb-2">
+
+                  {/* Image overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B]/50 to-transparent" />
+
+                  {/* Service number */}
+                  <span className="absolute bottom-4 left-4 font-mono text-xs tracking-[0.15em] text-white bg-[#2563EB] px-3 py-1.5 rounded-full">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <h3 className="font-display text-lg text-[#16302A] mb-2 leading-snug">
+                </div>
+
+                <div className="p-6 flex flex-col flex-1">
+
+                  <h3 className="font-display text-xl text-[#0B132B] mb-3 leading-snug">
                     {service.title}
                   </h3>
-                  <p className="text-[#4A463B] text-[15px] leading-relaxed mb-3 flex-1">
+
+                  <p className="text-[#475569] text-[15px] leading-relaxed mb-5 flex-1">
                     {isExpanded ? service.description : previewText}
                   </p>
+
                   <button
-                    onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                    className="inline-flex items-center gap-1.5 text-sm text-[#16302A] font-medium hover:text-[#C68A2E] transition self-start"
+                    onClick={() =>
+                      setExpandedIndex(isExpanded ? null : index)
+                    }
+                    className="inline-flex items-center gap-2 text-sm text-[#2563EB] font-semibold hover:text-[#0B132B] transition self-start group"
                   >
                     {isExpanded ? 'Show less' : 'Read more'}
+
                     <FaArrowRight
-                      className={`text-xs transition-transform ${
-                        isExpanded ? '-rotate-90' : 'rotate-0'
+                      className={`text-xs transition-transform duration-300 ${
+                        isExpanded
+                          ? '-rotate-90'
+                          : 'group-hover:translate-x-1'
                       }`}
                     />
                   </button>
@@ -223,28 +281,44 @@ export default function Services() {
               </div>
             );
           })}
+
         </div>
       </section>
 
-      {/* ---------- CTA STRIP ---------- */}
-      <section className="bg-[#16302A] py-16 px-6 sm:px-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-2xl sm:text-3xl text-[#F1E9DA] mb-4">
+      {/* =========================================================
+          CTA STRIP
+      ========================================================= */}
+      <section className="bg-[#0B132B] py-20 px-6 sm:px-10 relative overflow-hidden">
+
+        {/* Oceanic decorative glows */}
+        <div className="absolute -right-32 -top-32 w-80 h-80 bg-[#2563EB]/20 rounded-full blur-3xl" />
+        <div className="absolute -left-32 -bottom-32 w-80 h-80 bg-[#38BDF8]/10 rounded-full blur-3xl" />
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+
+          <span className="font-mono text-xs tracking-[0.25em] text-[#38BDF8] uppercase">
+            Let's talk
+          </span>
+
+          <h2 className="font-display text-3xl sm:text-4xl text-white mt-3 mb-4">
             Not sure which level of care fits?
           </h2>
-          <p className="text-[#9CB0A3] max-w-xl mx-auto mb-8 leading-relaxed">
+
+          <p className="text-slate-300 max-w-xl mx-auto mb-8 leading-relaxed">
             Our care coordinator can walk you through an honest assessment —
             no obligation, just clarity.
           </p>
+
           <a
             href="mailto:info@kareiga.co.za"
-            className="inline-flex items-center gap-2 bg-[#C68A2E] text-[#16302A] font-semibold px-7 py-3.5 rounded-sm hover:bg-[#dda04a] transition"
+            className="inline-flex items-center gap-3 bg-[#2563EB] text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-[#1D4ED8] hover:shadow-lg hover:shadow-blue-900/30 transition-all duration-300"
           >
             Talk to our care team
             <FaArrowRight className="text-sm" />
           </a>
         </div>
       </section>
+
     </div>
   );
 }
