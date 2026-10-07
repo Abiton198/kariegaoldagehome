@@ -25,8 +25,8 @@ import {
  * aboutImg is currently a neutral placeholder.
  * Replace with licensed/on-site photography before launch.
  */
-
-const aboutImg = 'https://picsum.photos/seed/kareiga-about/1600/700';
+const aboutImg =
+  'https://images.pexels.com/photos/18429415/pexels-photo-18429415.jpeg?auto=compress&cs=tinysrgb&w=1600';
 
 export default function About() {
   return (

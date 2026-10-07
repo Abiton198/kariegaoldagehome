@@ -751,10 +751,10 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 font-mono gap-4">
           <p>© {new Date().getFullYear()} Kareiga Senior Living. All rights reserved.</p>
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             <a href="#" className="hover:underline">Privacy Policy</a>
             <a href="#" className="hover:underline">POPIA Compliance</a>
-          </div>
+          </div> */}
         </div>
       </footer>
 
