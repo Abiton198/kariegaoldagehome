@@ -198,7 +198,7 @@ export default function Contact() {
             </span>
 
             <h2 className="font-display text-3xl text-[#16302A] mt-3 mb-8">
-              We usually reply within a day.
+              We usually reply within 3 days.
             </h2>
 
             <form
